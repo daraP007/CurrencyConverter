@@ -68,12 +68,30 @@ class CurrencyConverterTest {
 		stationTwo.exchangeMoney("inr");
 		stationThree.exchangeMoney("inr");
 
-		assertEquals(83.269312, stationOne.getMoney());
-		assertEquals(92.458851, stationTwo.getMoney());
-		assertEquals(0.58621668, stationThree.getMoney());
+		assertEquals(83.27, stationOne.getMoney());
+		assertEquals(92.46, stationTwo.getMoney());
+		assertEquals(0.59, stationThree.getMoney());
 		assertEquals("inr", stationOne.getMoneyType());
 		assertEquals("inr", stationTwo.getMoneyType());
 		assertEquals("inr", stationThree.getMoneyType());
+	}
+	@Test
+	@DisplayName("Exchange to Dollar")
+	void test4() {
+		CurrencyExchange stationOne = new CurrencyExchange(1, "inr");
+		CurrencyExchange stationTwo = new CurrencyExchange(1, "euro");
+		CurrencyExchange stationThree = new CurrencyExchange(1, "yen");
+		
+		stationOne.exchangeMoney("dollar");
+		stationTwo.exchangeMoney("dollar");
+		stationThree.exchangeMoney("dollar");
+
+		assertEquals(0.01, stationOne.getMoney());
+		assertEquals(1.11, stationTwo.getMoney());
+		assertEquals(0.01, stationThree.getMoney());
+		assertEquals("dollar", stationOne.getMoneyType());
+		assertEquals("dollar", stationTwo.getMoneyType());
+		assertEquals("dollar", stationThree.getMoneyType());
 	}
 
 }

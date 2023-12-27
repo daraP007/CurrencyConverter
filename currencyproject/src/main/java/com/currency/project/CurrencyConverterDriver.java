@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class CurrencyConverterDriver {
 	
+	
 	public static void main(String[] args) {
+		CurrencyConverterGui gui = new CurrencyConverterGui();
 		CurrencyExchange station = new CurrencyExchange();
 		Scanner myScan = new Scanner(System.in);
 		

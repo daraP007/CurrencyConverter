@@ -30,7 +30,12 @@ public class CurrencyExchange {
 	public void setMoneyType(String moneyType) {
 		this.moneyType = moneyType;
 	}
-
+	
+	private void roundTwoDecimals() {
+		double rounded = Math.round(money * 100.0) / 100.0;
+		setMoney(rounded);
+	}
+	
 	
 	public double exchangeMoney(String type) {
 		if (type.equalsIgnoreCase("yen")) {
@@ -38,17 +43,24 @@ public class CurrencyExchange {
 			setMoneyType("yen");
 		}else if (type.equalsIgnoreCase("dollar")) {
 			convertToDollar();
+			roundTwoDecimals();
 			setMoneyType("dollar");
 		}else if (type.equalsIgnoreCase("euro")) {
 			convertToEuro();
+			roundTwoDecimals();
 			setMoneyType("euro");
 		}else if (type.equalsIgnoreCase("inr")) {
 			convertToInr();
+			roundTwoDecimals();
 			setMoneyType("inr");
 		}
 		return money;
 	}
-
+	
+	
+	/*
+	 * This method converts the current currency the user has to the Indian Rupee currency.
+	 */
 	private void convertToInr() {
 		if (getMoneyType().equalsIgnoreCase("dollar")) {
 			setMoney(money * 83.269312);
@@ -59,6 +71,7 @@ public class CurrencyExchange {
 		}
 		
 	}
+	
 
 	private void convertToEuro() {
 		if (getMoneyType().equalsIgnoreCase("dollar")) {
@@ -82,11 +95,11 @@ public class CurrencyExchange {
 	
 	private void convertToYen() {
 		if (getMoneyType().equalsIgnoreCase("dollar")) {
-			setMoney(money * 142.11697);
+			setMoney((double)Math.round(money* 142.11697));
 		}else if(getMoneyType().equalsIgnoreCase("euro")) {
-			setMoney(money * 157.7457);
+			setMoney((double)Math.round(money * 157.7457));
 		}else if (getMoneyType().equalsIgnoreCase("inr")) {
-			setMoney(money * 1.7059729);
+			setMoney( (double) Math.round(money * 1.7059729));
 		}
 	}
 
